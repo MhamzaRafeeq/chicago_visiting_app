@@ -5,7 +5,7 @@ class AppTheme {
     primaryColor: Colors.blue,
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
-      titleLarge: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+      titleLarge: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.cyanAccent),
       bodySmall: TextStyle(fontSize: 18),
     ),
   );

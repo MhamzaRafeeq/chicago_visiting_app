@@ -59,7 +59,16 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/
+    - assets/images/chicago/
+    - assets/images/Events/hotel_zachary/
+    - assets/images/Events/house_of_blues/
+    - assets/images/Events/soldier_fields/
+    - assets/images/Neighbourhoods/Back_of_the_Yards/
+    - assets/images/Neighbourhoods/big_oaks/
+    - assets/images/Neighbourhoods/East_Village/
+    - assets/images/Sports/chicago_cubs_baseball/
+    - assets/images/Sports/chicago_fire_soccer/
+    - assets/images/Sports/chicago_white_sox_baseball/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
