@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ItemDetails extends StatelessWidget {
+class ItemDetails extends StatefulWidget {
   static String routeName = 'details';
-  static String routePath = '/details'; // Define route path
+  static String routePath = '/details';
+
+  @override
+  State<ItemDetails> createState() => _ItemDetailsState();
+}
+
+class _ItemDetailsState extends State<ItemDetails> {
+  int index = 0; // Current index
 
   @override
   Widget build(BuildContext context) {
@@ -10,22 +17,45 @@ class ItemDetails extends StatelessWidget {
     final Map<String, dynamic> args =
     ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
 
+    final List<String> images = args['images'] ?? []; // Ensure non-null
+    final List<String> descriptions = args['descriptions'] ?? [];
+
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            index = (index + 1) % images.length; // Cycle through images safely
+          });
+        },
+        child: Icon(Icons.navigate_next),
+      ),
       appBar: AppBar(title: Text(args['title'] ?? "Details")),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(args['images'][0]), // Display image
+            if (images.isNotEmpty)
+              Image.asset(
+                images[index], // Ensure safe access
+                width: MediaQuery.of(context).size.width,
+                height: 300,
+                fit: BoxFit.cover,
+              )
+            else
+              Container(height: 300, color: Colors.grey), // Placeholder if no images
+
             SizedBox(height: 10),
+
             Text(
-              args['title'],
+              args['title'] ?? "No Title",
               style: Theme.of(context).textTheme.titleLarge,
             ),
+
             SizedBox(height: 10),
+
             Text(
-              args['descriptions'][0],
+              descriptions.isNotEmpty ? descriptions[index] : "No description available",
               style: Theme.of(context).textTheme.bodySmall,
             ),
           ],
