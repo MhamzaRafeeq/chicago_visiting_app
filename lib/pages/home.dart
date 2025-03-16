@@ -47,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             children: [
               InkWell(
                 onTap: ()async{
+                  print("data gone to next page: $place");
                   Navigator.pushNamed(context,ItemDetails.routePath, arguments: {
                     'title': place.title,
                     'descriptions': place.descriptions,

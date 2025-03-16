@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ItemDetails extends StatefulWidget {
+  const ItemDetails({super.key});
   static String routeName = 'details';
   static String routePath = '/details';
 
