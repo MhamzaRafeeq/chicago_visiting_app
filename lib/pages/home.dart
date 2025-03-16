@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Text(text),
+      child: Text(text, style: Theme.of(context).textTheme.bodyMedium),
     );
   }
   Widget _tabBarPageItem({required List<Place> items, required PlaceCategory category}){
@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 padding: const EdgeInsets.fromLTRB(24, 110, 24, 0),
                 child: Text(
                   'Welcome to Chicago',
-                  style: AppTheme.lightTheme.textTheme.titleLarge,
+                  style: AppTheme.lightTheme.textTheme.titleLarge!.copyWith(color:Theme.of(context).primaryColor ),
                 ),
               ),
               Expanded(
@@ -139,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                               ),
                             ],
                           ),
-                          indicatorSize: TabBarIndicatorSize.label,
+                          indicatorSize: TabBarIndicatorSize.tab,
                           controller: tabBarController,
                           tabs: [
                             Tab(

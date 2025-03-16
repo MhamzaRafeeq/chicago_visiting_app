@@ -16,7 +16,7 @@ class _ItemDetailsState extends State<ItemDetails> {
   Widget build(BuildContext context) {
     // Retrieve arguments passed from navigation
     final Map<String, dynamic> args =
-    ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;  
 
     final List<String> images = args['images'] ?? []; // Ensure non-null
     final List<String> descriptions = args['descriptions'] ?? [];
@@ -37,11 +37,14 @@ class _ItemDetailsState extends State<ItemDetails> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (images.isNotEmpty)
-              Image.asset(
-                images[index], // Ensure safe access
-                width: MediaQuery.of(context).size.width,
-                height: 300,
-                fit: BoxFit.cover,
+              Hero(
+                tag: images[index],
+                child: Image.asset(
+                  images[index], // Ensure safe access
+                  width: MediaQuery.of(context).size.width,
+                  height: 300,
+                  fit: BoxFit.cover,
+                ),
               )
             else
               Container(height: 300, color: Colors.grey), // Placeholder if no images
@@ -55,9 +58,17 @@ class _ItemDetailsState extends State<ItemDetails> {
 
             SizedBox(height: 10),
 
-            Text(
-              descriptions.isNotEmpty ? descriptions[index] : "No description available",
-              style: Theme.of(context).textTheme.bodySmall,
+            Container(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Text(
+                      descriptions.isNotEmpty ? descriptions[index] : "No description available",
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
