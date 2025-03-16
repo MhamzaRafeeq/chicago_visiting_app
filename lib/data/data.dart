@@ -18,8 +18,8 @@ final List<Place> places = [
     category: PlaceCategory.Neighbours,
     title: 'East Village',
     images: [
-      'assets/images/Neighbourhoods/East_Village/download (2).jfif',
-      'assets/images/Neighbourhoods/East_Village/download (3).jfif',
+      'assets/images/Neighbourhoods/East_Village/1.jfif',
+      'assets/images/Neighbourhoods/East_Village/East_Village_Chicago.jpg',
     ],
     descriptions: [
       'East Village or \"East Ukrainian Village\" is a neighborhood directly east of Ukrainian Village. The generally accepted boundaries of East Village are Ashland (1600 W) on the east, Damen (2000 W) on the west, Division (1200 N) on the north, and Chicago (800 N) on the south (although some people extend the southern border to Grand Ave).'

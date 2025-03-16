@@ -98,9 +98,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(24, 110, 24, 0),
-                child: Text(
-                  'Welcome to Chicago',
-                  style: AppTheme.lightTheme.textTheme.titleLarge!.copyWith(color:Theme.of(context).primaryColor ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Welcome to Chicago',
+                      style: AppTheme.lightTheme.textTheme.titleLarge!.copyWith(color:Theme.of(context).primaryColor ),
+                    ),
+                  ],
                 ),
               ),
               Expanded(

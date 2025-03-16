@@ -82,7 +82,7 @@ class _VistingPlaceCardState extends State<VistingPlaceCard> {
                     Text(
                       widget!.title ?? 'Grand Canyon',
                       style:
-                      Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.black,fontSize: 24),
+                      Theme.of(context).textTheme.titleMedium,
                     ),
                     Text(
 
@@ -91,7 +91,7 @@ class _VistingPlaceCardState extends State<VistingPlaceCard> {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
 
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.black, fontSize: 16),
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ],
                 ),

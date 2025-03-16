@@ -30,7 +30,7 @@ class _ItemDetailsState extends State<ItemDetails> {
         },
         child: Icon(Icons.navigate_next),
       ),
-      appBar: AppBar(title: Text(args['title'] ?? "Details")),
+      appBar: AppBar(title: Text(args['title'] ?? "Details", style: Theme.of(context).textTheme.titleLarge,)),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
@@ -51,22 +51,28 @@ class _ItemDetailsState extends State<ItemDetails> {
 
             SizedBox(height: 10),
 
-            Text(
-              args['title'] ?? "No Title",
-              style: Theme.of(context).textTheme.titleLarge,
+            Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: Text(
+                args['title'] ?? "No Title",
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
             ),
 
             SizedBox(height: 10),
 
-            Container(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Text(
-                      descriptions.isNotEmpty ? descriptions[index] : "No description available",
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                  ],
+            Expanded(
+              child: Container(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Text(
+                        softWrap: true,
+                        descriptions.isNotEmpty ? descriptions[index] : "No description available",
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
