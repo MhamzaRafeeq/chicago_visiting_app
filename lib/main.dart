@@ -1,3 +1,4 @@
+import 'package:chicago_site_seeing/pages/visit_details.dart';
 import 'package:flutter/material.dart';
 import 'pages/home.dart';
 import 'pages/details.dart'; // Import the details screen
@@ -14,10 +15,11 @@ class MyApp extends StatelessWidget {
       title: 'Chicago Site Seeing App',
       theme: AppTheme.lightTheme,
       debugShowCheckedModeBanner: false,
-      initialRoute: HomeScreen.routePath, // Set initial route
+      initialRoute: '/home', // Set initial route
       routes: {
-        HomeScreen.routePath: (context) => HomeScreen(),
-        ItemDetails.routePath: (context) => ItemDetails(), // Define details page
+        '/home': (context) => HomeScreen(),
+        '/details': (context) => ItemDetails(), // Define details page
+        '/visit': (context)=>VisitDetails(),
       },
     );
   }

@@ -10,13 +10,13 @@ class ItemDetails extends StatefulWidget {
 }
 
 class _ItemDetailsState extends State<ItemDetails> {
-  int index = 0; // Current index
-
+  int number = 0;
   @override
   Widget build(BuildContext context) {
     // Retrieve arguments passed from navigation
+
     final Map<String, dynamic> args =
-    ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;  
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
 
     final List<String> images = args['images'] ?? []; // Ensure non-null
     final List<String> descriptions = args['descriptions'] ?? [];
@@ -25,30 +25,35 @@ class _ItemDetailsState extends State<ItemDetails> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
-            index = (index + 1) % images.length; // Cycle through images safely
+            if (number == 0) {
+              number = 1;
+            } else {
+              number = 0;
+            }
+            debugPrint('number: $number');
           });
         },
         child: Icon(Icons.navigate_next),
       ),
-      appBar: AppBar(title: Text(args['title'] ?? "Details", style: Theme.of(context).textTheme.titleLarge,)),
+      appBar: AppBar(
+        title: Text(
+          args['title'] ?? "Details",
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
+      ),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (images.isNotEmpty)
-              Hero(
-                tag: images[index],
-                child: Image.asset(
-                  images[index], // Ensure safe access
-                  width: MediaQuery.of(context).size.width,
-                  height: 300,
-                  fit: BoxFit.cover,
-                ),
-              )
-            else
-              Container(height: 300, color: Colors.grey), // Placeholder if no images
+            Image.asset(
+              images[number], // Ensure safe access
+              width: MediaQuery.of(context).size.width,
+              height: 300,
+              fit: BoxFit.cover,
+            ),
 
+            // Placeholder if no images
             SizedBox(height: 10),
 
             Padding(
@@ -68,7 +73,9 @@ class _ItemDetailsState extends State<ItemDetails> {
                     children: [
                       Text(
                         softWrap: true,
-                        descriptions.isNotEmpty ? descriptions[index] : "No description available",
+                        descriptions.isNotEmpty
+                            ? descriptions[number]
+                            : "No description available",
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ],

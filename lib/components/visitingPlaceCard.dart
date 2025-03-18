@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class VistingPlaceCard extends StatefulWidget {
+class VistingPlaceCard extends StatelessWidget {
   const VistingPlaceCard({
     super.key,
     required this.title,
@@ -11,21 +11,7 @@ class VistingPlaceCard extends StatefulWidget {
   final String? description;
   final String? image;
 
-  @override
-  State<VistingPlaceCard> createState() => _VistingPlaceCardState();
-}
-
-class _VistingPlaceCardState extends State<VistingPlaceCard> {
-  @override
-  void setState(VoidCallback callback) {
-    super.setState(callback);
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
+  // @override
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -58,17 +44,13 @@ class _VistingPlaceCardState extends State<VistingPlaceCard> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(40),
                   ),
-                  child: Hero(
-                    tag: widget!.image!,
-                    transitionOnUserGestures: true,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.asset(
-                        widget!.image!,
-                        width: 80,
-                        height: 80,
-                        fit: BoxFit.cover,
-                      ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Image.asset(
+                      image!,
+                      width: 80,
+                      height: 80,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
@@ -80,13 +62,13 @@ class _VistingPlaceCardState extends State<VistingPlaceCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget!.title ?? 'Grand Canyon',
+                      title ?? 'Grand Canyon',
                       style:
                       Theme.of(context).textTheme.titleMedium,
                     ),
                     Text(
 
-                        widget!.description??
+                        description??
                         'Arizona, USA',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,

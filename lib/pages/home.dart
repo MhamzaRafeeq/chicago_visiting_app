@@ -14,14 +14,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
-  final scaffoldKey = GlobalKey<ScaffoldState>();
+
   late TabController tabBarController;
 
   @override
   void initState() {
     super.initState();
     tabBarController = TabController(vsync: this, length: 3, initialIndex: 0);
+
   }
+  @override
+  void dispose() {
+    tabBarController.dispose();
+    super.dispose();
+  }
+
 
   Widget _tabStyle({required String text}){
     return Container(
@@ -46,9 +53,20 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           return Column(
             children: [
               InkWell(
-                onTap: ()async{
-                  print("data gone to next page: $place");
-                  Navigator.pushNamed(context,ItemDetails.routePath, arguments: {
+                onTap: (){
+                  debugPrint("data gone to next page: $place");
+                  // Navigator.of(context).push(
+                  //   MaterialPageRoute(
+                  //     builder: (context) => ItemDetails(),
+                  //     settings: RouteSettings(arguments: {
+                  //       'title': place.title,
+                  //       'descriptions': place.descriptions,
+                  //       'images':place.images,
+                  //     }),
+                  //   ),
+                  // );
+                  debugPrint('arguments passed');
+                  Navigator.pushNamed(context,'/details', arguments: {
                     'title': place.title,
                     'descriptions': place.descriptions,
                     'images':place.images,
@@ -71,9 +89,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      key: scaffoldKey,
       body: Stack(
+
         children: [
           // Background Image
           Container(
